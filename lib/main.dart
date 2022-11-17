@@ -62,7 +62,8 @@ class HomeScreen extends StatelessWidget {
               ),
               CircleAvatar(
                 backgroundColor: Colors.grey[500],
-                backgroundImage: NetworkImage('https://cdn3d.iconscout.com/3d/premium/thumb/afro-avatar-6299534-5187866.png'),
+                backgroundImage: NetworkImage(
+                    'https://cdn3d.iconscout.com/3d/premium/thumb/afro-avatar-6299534-5187866.png'),
               )
             ],
           ),
@@ -80,7 +81,6 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
         ),
-
 
         const SizedBox(height: 30),
 
@@ -123,11 +123,11 @@ class HomeScreen extends StatelessWidget {
                 height: 200,
                 width: 350,
                 decoration: const BoxDecoration(
-                    // color: Colors.red, borderRadius: BorderRadius.circular(20)),
-                    image: DecorationImage(
-                      image: AssetImage('assets/images/image.png'),
-                      fit: BoxFit.fill,
-                    ),
+                  // color: Colors.red, borderRadius: BorderRadius.circular(20)),
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/image.png'),
+                    fit: BoxFit.fill,
+                  ),
                 ),
               );
             },
@@ -142,22 +142,76 @@ class HomeScreen extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                Row(
-                  children: [
-                    Text('Let\'s RocknRoll', style: kMulishBold),
-                    Icon(Icons.verified, color: Colors.blue, size: 20,),
-                  ],
-                ),
-                Text('by William Jr.'),
+                  Row(
+                    children: [
+                      Text('Let\'s RocknRoll', style: kMulishBold),
+                      Icon(
+                        Icons.verified,
+                        color: Colors.blue,
+                        size: 20,
+                      ),
+                    ],
+                  ),
+                  Text('by William Jr.'),
                 ],
               ),
               CircleAvatar(
                 backgroundColor: Colors.grey[300],
-                child: Icon(Icons.favorite_outline, color: Colors.black,),
+                child: Icon(
+                  Icons.favorite_outline,
+                  color: Colors.black,
+                ),
               ),
             ],
           ),
-        )
+        ),
+
+        const SizedBox(height: 30),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(20.0, 0, 0, 20.0),
+          child: Text('Upcoming Events', style: kMulishBold),
+        ),
+        Expanded(
+          child: ListView.builder(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            itemCount: 2,
+            scrollDirection: Axis.vertical,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                child: Row(
+                  children: [
+                    Container(
+                      height: 84,
+                      width: 84,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage('assets/images/festival_dancer.png')
+                          ),
+                          borderRadius: BorderRadius.circular(15.0)),
+                    ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Festival Dancer', style: kMulishBold,),
+                      Text('By Linkin Park', style: kMulishRegular,),
+                      SizedBox(height: 10.0,),
+                      Row(
+                        children: [
+                          Icon(Icons.access_time_rounded, color: Colors.grey[300], size: 20,),
+                          SizedBox(width: 5.0,),
+                          Text('October 21, 09:00 PM', style: kMulishRegular,)
+                        ],
+                      )
+                    ],
+                  )
+                  ],
+                ),
+              );
+            },
+          ),
+        ),
       ],
     ));
   }
