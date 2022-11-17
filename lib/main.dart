@@ -191,6 +191,7 @@ class HomeScreen extends StatelessWidget {
                           ),
                           borderRadius: BorderRadius.circular(15.0)),
                     ),
+                    SizedBox(width: 20.0,), 
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
