@@ -30,53 +30,62 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: ListView(
-      padding: EdgeInsets.all(30.0),
       children: [
+        SizedBox(height: 40.0),
         //HEADER: Location and Image
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              width: 180,
-              height: 40,
-              decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.circular(30.0)),
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Row(children: [
-                  CircleAvatar(
-                    backgroundColor: Colors.white,
-                    child: Icon(
-                      Icons.location_on_outlined,
-                      color: Colors.black,
-                      size: 15,
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 30.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                width: 180,
+                height: 40,
+                decoration: BoxDecoration(
+                    color: Colors.black,
+                    borderRadius: BorderRadius.circular(30.0)),
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Row(children: [
+                    CircleAvatar(
+                      backgroundColor: Colors.white,
+                      child: Icon(
+                        Icons.location_on_outlined,
+                        color: Colors.black,
+                        size: 15,
+                      ),
                     ),
-                  ),
-                  Text('Ha Noi, Viet Nom',
-                      style: TextStyle(color: Colors.white))
-                ]),
+                    Text('Ha Noi, Viet Nom',
+                        style: TextStyle(color: Colors.white))
+                  ]),
+                ),
               ),
-            ),
-            CircleAvatar(
-              backgroundColor: Colors.grey[500],
-              backgroundImage: NetworkImage(
-                  'https://cdn3d.iconscout.com/3d/premium/thumb/afro-avatar-6299534-5187866.png'),
-            )
-          ],
+              CircleAvatar(
+                backgroundColor: Colors.grey[500],
+                backgroundImage: NetworkImage('https://cdn3d.iconscout.com/3d/premium/thumb/afro-avatar-6299534-5187866.png'),
+              )
+            ],
+          ),
         ),
         const SizedBox(height: 30),
 
         //Date
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('Today\'s October 5th'),
-            Text('Good Morning, Penguin!', style: kMulishBold),
-          ],
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Today\'s October 5th'),
+              Text('Good Morning, Penguin!', style: kMulishBold),
+            ],
+          ),
         ),
+
+
         const SizedBox(height: 30),
+
         Container(
+          margin: EdgeInsets.symmetric(horizontal: 20.0),
           height: 50,
           width: double.infinity,
           decoration: BoxDecoration(
@@ -98,22 +107,57 @@ class HomeScreen extends StatelessWidget {
         ),
 
         const SizedBox(height: 30),
-        Text('Nearby Events', style: kMulishBold),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(20.0, 0, 0, 20.0),
+          child: Text('Nearby Events', style: kMulishBold),
+        ),
         SizedBox(
           height: 200,
           child: ListView.builder(
-            itemCount: 10,
+            physics: const BouncingScrollPhysics(),
+            itemCount: 2,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
               return Container(
+                margin: const EdgeInsets.symmetric(horizontal: 10.0),
                 height: 200,
-                width: 100,
-                decoration: BoxDecoration(
-                    color: Colors.red, borderRadius: BorderRadius.circular(20)),
+                width: 350,
+                decoration: const BoxDecoration(
+                    // color: Colors.red, borderRadius: BorderRadius.circular(20)),
+                    image: DecorationImage(
+                      image: AssetImage('assets/images/image.png'),
+                      fit: BoxFit.fill,
+                    ),
+                ),
               );
             },
           ),
         ),
+
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                Row(
+                  children: [
+                    Text('Let\'s RocknRoll', style: kMulishBold),
+                    Icon(Icons.verified, color: Colors.blue, size: 20,),
+                  ],
+                ),
+                Text('by William Jr.'),
+                ],
+              ),
+              CircleAvatar(
+                backgroundColor: Colors.grey[300],
+                child: Icon(Icons.favorite_outline, color: Colors.black,),
+              ),
+            ],
+          ),
+        )
       ],
     ));
   }
